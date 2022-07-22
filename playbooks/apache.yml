@@ -12,10 +12,28 @@
         name: "apache2"
         state: present
 
-    - name: copy my index page
+    - name: create a directory if it does not exist
+      file:
+        path: "{{ website_path }}"
+        state: directory
+
+    - name: copy configuration file for apache
       copy:
-        src: "index.html"
-        dest: "/var/www/html/index.html"
+        src: "jinu.conf"
+        dest: "/etc/apache2/sites-available/jinu.conf"
+
+    - name: Enable site for jinu.conf
+      command:
+        a2ensite jinu.conf
+
+    - name: disable site for default.conf
+      command:
+        a2dissite 000-default.conf
+
+#    - name: copy my index page
+#      copy:
+#       src: "index.html"
+#       dest: "/var/www/html/index.html"
 
     - name: Restart apache2 server
       service:
