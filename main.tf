@@ -1,5 +1,4 @@
-resource "aws_instance" "ansible_servers" {
-  count = 5
+resource "aws_instance" "ansible_server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.medium"
 
@@ -8,14 +7,14 @@ key_name = "talent-academy-lab"
 subnet_id = data.aws_subnet.talent_academy.id
 
   tags = {
-    Name = "ansible _server {count.index + 1}$"
+    Name = "ansible_server"
   }
 }
 
 resource "aws_eip" "ansible_server_ip" {
-  count = 5
 
-  instance = aws_instance.ansible_servers[count.index].id
+
+  instance = aws_instance.ansible_server.id
   vpc      = true
 
 }
