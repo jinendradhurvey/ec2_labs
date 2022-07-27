@@ -4,19 +4,27 @@ resource "aws_security_group" "ansible_server" {
   vpc_id      = data.aws_vpc.talent_academy.id
 
   ingress {
-    description      = "Allow port 80"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["49.35.146.59/32"]
+    description = "Allow port 22"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["49.35.146.59/32"]
   }
 
-    ingress {
-    description      = "Allow port 22"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["103.91.88.205/32"]
+  ingress {
+    description = "Allow port 80"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["49.35.146.59/32"]
+  }
+
+  ingress {
+    description = "Allow port 22"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["103.91.88.205/32"]
   }
 
   egress {

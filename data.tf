@@ -10,15 +10,15 @@ data "aws_ami" "ubuntu" {
 }
 
 data "aws_vpc" "talent_academy" {
-  filter { 
-    name = "tag:Name"
+  filter {
+    name   = "tag:Name"
     values = ["lab_vpc"]
-    }
+  }
 }
 
 data "aws_subnet" "talent_academy" {
-  filter { 
-    name = "tag:Name"
+  filter {
+    name   = "tag:Name"
     values = ["Public"]
-    }
+  }
 }

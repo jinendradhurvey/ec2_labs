@@ -22,10 +22,7 @@
         src: "jinu.conf"
         dest: "/etc/apache2/sites-available/jinu.conf"
 
-    - name: Copy new temple file index.html file
-      template:
-        src: "index.html"
-        dest: "{{ website_path }}/index.html"
+
 
     - name: Enable site for jinu.conf
       command:
